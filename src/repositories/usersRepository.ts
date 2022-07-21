@@ -1,15 +1,15 @@
-import { prismaClient } from "../config/database.js";
+import { prisma } from "../config/database.js";
 import { User } from "../services/userServices.js";
 
 export async function insert(user: User) {
-    await prismaClient.users.create({
+    await prisma.users.create({
         data: user
     })
 }
 
 
 export async function findByEmail(email: string) {
-    return await prismaClient.users.findFirst({
+    return await prisma.users.findFirst({
         where: {
             email
         }

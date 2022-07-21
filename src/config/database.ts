@@ -2,5 +2,5 @@ import pkg from "@prisma/client"
 
 const { PrismaClient } = pkg
 
-export const prismaClient = new PrismaClient;
+export const prisma = new PrismaClient;
 
