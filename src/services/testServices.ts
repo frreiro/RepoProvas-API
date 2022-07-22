@@ -22,3 +22,7 @@ export async function createTest(test: TestInfo) {
     await testsRepository.create(testData);
 }
 
+export async function getTestByDiscipline(userId: number) {
+
+}
+

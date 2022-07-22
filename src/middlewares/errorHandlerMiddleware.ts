@@ -6,6 +6,8 @@ export async function errorHandler(error, req: Request, res: Response, next: Nex
     if (error.type === "Conflict") return res.sendStatus(409);
     if (error.type === "Expectation Fail") return res.sendStatus(417);
     if (error.type === "Not Found") return res.sendStatus(404);
+    if (error.type === "Unauthorized") return res.sendStatus(401);
+
 
     return res.sendStatus(500);
 
@@ -26,4 +28,8 @@ export function _notfound() {
 
 export function _expectationFail() {
     throw { type: "Expectation Fail" }
+}
+
+export function _unauthorized() {
+    throw { type: "Unauthorized" }
 }

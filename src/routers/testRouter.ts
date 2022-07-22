@@ -5,7 +5,8 @@ import { schemaValidate } from "../middlewares/validateSchema.js";
 
 const testRouter = Router();
 
-testRouter.post("/test", schemaValidate(testSchema), createTest)
+testRouter.post("/test", schemaValidate(testSchema), createTest);
+testRouter.get("/test/discipline",)
 
 
 export default testRouter
