@@ -1,3 +1,4 @@
 /node_modules
 .env
 /repoprovas-front
+.env.test

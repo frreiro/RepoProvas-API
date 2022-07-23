@@ -41,22 +41,60 @@ async function main() {
         { teacherId: 2, disciplineId: 5 },
         { teacherId: 2, disciplineId: 6 },
     ]
+    defaultTerms.forEach(async (termObj) => {
+        console.log("passei")
+        await prisma.terms.upsert({
+            where: termObj,
+            update: {},
+            create: termObj
+        })
+    })
 
-    await prisma.terms.createMany({
-        data: defaultTerms
+
+    defaultCategories.forEach(async (catObj) => {
+        await prisma.categories.upsert({
+            where: catObj,
+            update: {},
+            create: catObj
+        })
     })
-    await prisma.categories.createMany({
-        data: defaultCategories
+
+
+
+    defaultTeacher.forEach(async (teacherObj) => {
+        console.log(teacherObj)
+        await prisma.teachers.upsert({
+            where: teacherObj,
+            update: {},
+            create: teacherObj
+        })
     })
-    await prisma.teachers.createMany({
-        data: defaultTeacher
+
+
+
+    defaultDisciplines.forEach(async (disObj) => {
+        await prisma.disciplines.upsert({
+            where: {
+                name: disObj.name
+            },
+            update: {},
+            create: disObj
+        })
     })
-    await prisma.disciplines.createMany({
-        data: defaultDisciplines
+
+    defaultTeacherDisciplines.forEach(async (teachDiscObj) => {
+        const relation = await prisma.teacherDisciplines.findMany({
+            where: {
+                teacherId: teachDiscObj.teacherId,
+                disciplineId: teachDiscObj.disciplineId
+            }
+        })
+        if (relation.length === 0) {
+            await prisma.teacherDisciplines.create({
+                data: teachDiscObj
+            });
+        }
     })
-    await prisma.teacherDisciplines.createMany({
-        data: defaultTeacherDisciplines
-    });
 
 }
 
