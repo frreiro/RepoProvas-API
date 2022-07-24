@@ -37,11 +37,19 @@ export async function getTestByDiscipline() {
 function _mapDisciplineAndTeacher(disciplines: any[]) {
     return disciplines.map(discipline => {
         const teacherDisciplines = discipline.teacherDisciplines.map(teachers => {
-            const tests = teachers.tests.map(test => test)
+            const tests = _mapTestsTakeOff(teachers.tests)
             return tests
         })
         delete discipline.teacherDisciplines
         return { ...discipline, tests: teacherDisciplines }
+    })
+}
+
+function _mapTestsTakeOff(tests: any[]) {
+    return tests.map(test => {
+        const teacher = test.teacherDiscipline.teacher;
+        delete test.teacherDiscipline
+        return { ...test, teacher }
     })
 }
 

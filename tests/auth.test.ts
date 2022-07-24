@@ -5,11 +5,12 @@ import { faker } from "@faker-js/faker"
 
 const createUser = factory.randomCorrectCreateUser()
 
-beforeEach(async () => {
-    await factory.deleteAllUsers()
-})
-
 describe("check Sign-Up request", () => {
+
+    beforeEach(async () => {
+        await factory.deleteAllUsers()
+    })
+
     it("given an email and password, create user", async () => {
         const response = await supertest(app).post("/sign-up").send(createUser)
         expect(response.statusCode).toEqual(201);
@@ -41,9 +42,18 @@ describe("check Sign-Up request", () => {
         expect(response.statusCode).toEqual(422);
     })
 
+    afterEach(async () => {
+        await factory.deleteAllUsers()
+    })
+
 })
 
 describe("check Sign-in request", () => {
+
+    beforeEach(async () => {
+        await factory.deleteAllUsers()
+    })
+
 
     it("given an email and password already registred, should return token", async () => {
         //setUp
@@ -70,10 +80,9 @@ describe("check Sign-in request", () => {
         //test
         expect(response.statusCode).toEqual(404);
     })
+
+    afterEach(async () => {
+        await factory.deleteAllUsers()
+    })
 })
 
-
-
-afterEach(async () => {
-    await factory.deleteAllUsers()
-})
