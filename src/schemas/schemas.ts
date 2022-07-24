@@ -18,7 +18,7 @@ export interface TestInfo {
 export const createUserSchema = Joi.object<createUser>({
     email: Joi.string().email().required(),
     password: Joi.string().min(5).required(),
-    confirmPassword: Joi.ref("password")
+    confirmPassword: Joi.string().valid(Joi.ref("password")).required()
 })
 
 

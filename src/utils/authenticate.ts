@@ -9,8 +9,8 @@ import { _unauthorized, _unprocessableEntity } from "../middlewares/errorHandler
 
 export const encrypt = (password: string) => bcrypt.hashSync(password, 10)
 
-export const compare = (password: string, hashPassword: string) => {
-    if (!bcrypt.compareSync(password, hashPassword)) _unprocessableEntity
+export function compare(password: string, hashPassword: string) {
+    if (!bcrypt.compareSync(password, hashPassword)) _unprocessableEntity()
 }
 
 const JWT_KEY = process.env.JWT_KEY;

@@ -42,7 +42,6 @@ async function main() {
         { teacherId: 2, disciplineId: 6 },
     ]
     defaultTerms.forEach(async (termObj) => {
-        console.log("passei")
         await prisma.terms.upsert({
             where: termObj,
             update: {},
@@ -62,7 +61,6 @@ async function main() {
 
 
     defaultTeacher.forEach(async (teacherObj) => {
-        console.log(teacherObj)
         await prisma.teachers.upsert({
             where: teacherObj,
             update: {},

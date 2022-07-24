@@ -15,7 +15,7 @@ export async function errorHandler(error, req: Request, res: Response, next: Nex
 }
 
 export function _conflict() {
-    throw { type: "conflict" }
+    throw { type: "Conflict" }
 }
 
 export function _unprocessableEntity() {
