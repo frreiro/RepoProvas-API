@@ -28,14 +28,15 @@ API:
     - headers: {}
     - body: {
         "email": "lorem@gmail.com",
-        "senha": "loremipsum"
+        "password": "loremipsum",
+        "confirmPassword": "loremipsum"
     }
 - POST /sign-in
     - Rota para fazer login
     - headers: {}
     - body: {
     "email": "lorem@gmail.com",
-    "senha": "loremipsum"
+    "password": "loremipsum"
     }
 - POST /test (autenticada)
     - Rota para criar um teste 
