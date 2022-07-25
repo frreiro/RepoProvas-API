@@ -1,0 +1,1 @@
+{"client":"Thunder Client","environmentName":"Base Environment","dateExported":"2022-07-25T13:58:36.691Z","version":"1.0","variables":[{"name":"baseUrl","value":"http://localhost:5000"},{"name":"baseUrlDeploy","value":" https://repoprovasbackend.herokuapp.com"}]}
